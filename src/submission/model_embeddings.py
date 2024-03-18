@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
+import torch
 import torch.nn as nn
 
 class ModelEmbeddings(nn.Module): 
@@ -42,6 +42,10 @@ class ModelEmbeddings(nn.Module):
         ###     Embedding Layer:
         ###         https://pytorch.org/docs/stable/generated/torch.nn.Embedding.html#torch.nn.Embedding
         ### START CODE HERE (~2 Lines)
+        self.source = nn.Embedding(len(vocab.src), embed_size, padding_idx=src_pad_token_idx)
+        self.target = nn.Embedding(len(vocab.tgt), embed_size, padding_idx=tgt_pad_token_idx)
+        print(self.source(torch.LongTensor([1])))
+        print(self.target)
         ### END CODE HERE
 
 
